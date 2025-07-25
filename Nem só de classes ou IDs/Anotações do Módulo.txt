@@ -1,0 +1,240 @@
+		Child combinator
+- Ele é usado com sinal de ">"
+
+exemplo:<body>
+	  <ul>
+            <li> Item 1 </li>
+	   <ul>
+             <li> Item 2 </li>
+	   </ul>
+          </ul>
+         </body>
+CSS:
+  body > ul > li {
+          color: blue;      <=== {COM ISSO EU FAÇO COM QUE SÓ O ITEM 1 FICAR COM A COR BLUE
+   }                            PORQUE EU ESTOU INDO NO 1 <UL> QUE TEM DENTRO DO BODY E NO 1 <LI>}
+  
+----------------------------------------\\-------------------------------------------------------------------------
+                      Sibling Combinator
+- Usando o sinal de "+" somente o 1 elemento vai ser estilizado
+
+exemplo: <h1>                                                      
+  Título                     
+</h1>
+<p>
+  Esse é um parágrafo
+</p>
+<p>
+  Mais um parágrafo 
+</p>
+
+CSS:  h1 + p {
+	color: red;      <=== {O 1 <P> VAI TER A COLOR RED,
+                               PORQUE É O PRIMEIRO QUE VEM DEPOIS DO <H1>}
+}
+
+- Usando o sinal de "~" seleciona TODOS os elementos que tiverem no <h1>
+
+exemplo: 
+
+CSS:
+  h1 ~ p {
+	color: red;                  <=== {FAZENDO ISSO TODOS OS <P> TERÃO COR RED}
+  }
+
+-------------------------------------\\--------------------------------------------------------------------------------
+                              Utilizando combinators
+- Usando o "ul > li[class = "red"]" vai mudar só a <li> que tem a class red
+
+exemplo: <ul>
+  <li>Alooo</li>
+  <li class="red">Hey</li>
+</ul>
+
+CSS:
+ul > li[class="red"] {
+	color: red;                                   <==== {ESSE JEITO MAS TRABALHOSO DE SE FAZER, MAS É UM JEITO}
+}
+
+- Tem o jeito mais eficiente de se fazer que é com o .
+     
+  exemplo: <ul>
+             <li>Alooo</li>
+             <li class="red">Hey</li>
+           </ul>
+
+        <p class="red">Para paragrafo</p>
+
+CSS:
+     .red {
+	  color: red;                                <==== {DESSE JEITO PEGO OS ELEMENTOS QUE TEM A CLASS RED}
+     }
+
+-------------------------------------------\\--------------------------------------------------------------------------------
+                                             Pseudo-classes
+- É um tipo de seletor que irá selecionar o primeiro elemento de uma caixa ou um elemento que está com o mouse em cima dele 
+- O Pseudo-classes começam com ":" e o nome da pseudo-class
+
+--------------------------------------------\\--------------------------------------------------------------------------------
+                                             First-child
+- Usamos a first-child é quando eu quero selecionar somente o primeiro filho de um grupo de elementos
+
+exemplo: <ul>
+          <h3>Palavras bonitas</h3>
+          <li>Gratidão</li>
+          <li>Esperança</li>
+          <li>Fé</li>
+        </ul>                                             <==== {AQUI EU PEGO O PRIMEIRO ELEMENTO QUE VEM DENTRO DA <UL>, QUE NESSE
+                                                                CASO SERIA O <H3> E COLOCO OS ESTILOS QUE ESTÃO NO CSS}
+
+CSS: 
+     ul li:first-child {
+        font-weight: bold;
+     }
+
+--------------------------------------------\\----------------------------------------------------------------------------------
+                                                Nth-of-type
+- Usamos o :nth-of-type para pegar o tipo do elemento e a posição dele no ()
+
+exemplo: <article>
+            <h3>Gratidão</h3>
+        <p>Ser grato é ter reconhecimento de que alguém o auxiliou de alguma forma. É perceber naturalmente os benefícios que fizeram a seu favor.</p>
+
+        <p>É quando voce recebe uma ajuda, direita ou indiretamente, e consegue acreditar na outra pessoa, o gesto de bondade</p>
+
+        <p>A gratidão deveria ser um sentimento nato, plantado,dentro de cada ser humano</p>
+       </article>
+
+CSS:
+    article p:nth-of-type(3) {                         <===== {ASSIM EU PEGO A 3 TAG <P> E COLOCO O ESTILO QUE ESTÁ NO CSS}
+       font-weight: bold;
+       font-size: 18px;
+   }
+
+---------------------------------------------\\----------------------------------------------------------------------------------
+                                                Nth-child
+- O :nth-child() é quando queremos selecionar o primeiro elemento de um grupo de elementos
+
+exemplo: 
+      CSS: 
+	article p:nth-child(3) {
+            font-weight: bold;
+            font-size: 18px;                         <===== {ASSIM EU PEGO O TERCEIRO ELEMENTO QUE VEM NO <ARTICLE> E COLOCO ESTILOS
+                                                            QUE ESTÃO NO CSS}
+         }
+
+------------------------------------------\\------------------------------------------------------------------------------------------
+                                                Nth-child odd e even
+- O :nth-child(odd) são números impares
+
+exemplo: <ul>
+          <li>Gratidão</li>
+          <li>Esperança</li>
+          <li>Fé</li>
+          <li>Liberdade</li>
+          <li>Gratidão</li>                                  <===== {VAI FAZER AS <LI> QUE SÃO IMPARES COM OS ESTILOS QUE ESTÃO NO CSS :nth-child(odd)}
+          <li>Esperança</li>
+          <li>Fé</li>
+          <li>Liberdade</li>
+       </ul>
+
+CSS: 
+   ul li:nth-child(odd) {
+       color: black;
+       background: #eee;
+     }
+
+- O :nth-child(even) são números pares
+
+exemplo: 
+      ul li:nth-child(even){                               <===== {VAI FAZER COM AS <LI> QUE SEJAM PARES COM OS ESTILOS QUE ESTÃO NO CSS :nth-child(even)}
+           color: gray;
+       }
+
+-------------------------------------------------\\----------------------------------------------------------------------------------------------
+                                                    Hover e focus
+- Usando :hover vai ser o estilo que eu vou colocar quando o meu mouse estiver em cima
+
+exemplo: <a href="#">Clique aqui</a>
+
+CSS: 
+    a:hover {                                              <===== {QUANDO O MOUSE ESTIVER EM CIMA DO "CLIQUE AQUI" MUDARÁ COR PRA VERMELHO}
+      color: red;
+   }
+
+- O :focus é aplicado quando eu quero dar um foco em algum elemento, assim o usuario clicando com o mouse ou o teclado nesse elemento
+
+exemplo: <input type="text">
+
+CSS:
+   input:focus {                           <===== {AQUI EU DEI O FOCO PARA O INPUT,PARA QUE QUANDO O USUÁRIO CLICAR NO CAMPO A BORDA DESSE CAMPO ESTARA COM A COR VERDE}
+      border-color: green;
+   }
+
+----------------------------------------------------\\----------------------------------------------------------------------------------------------
+                                                       Disabled e required
+- Com o :disabled eu desabilito um elemento
+
+exemplo: <input type="text" disabled>
+                                                 <===== {AQUI DESABILITEI O INPUT E COLOQUEI A COR DE FUNDO VERDE}
+CSS
+    input:disabled {
+      background-color: green;
+    }
+
+- Com :required é parecido com o :disabled
+
+ exemplo: <input type="text" required>
+
+CSS
+    input:required {
+      background-color: green;
+    }
+
+------------------------------------------------------\\---------------------------------------------------------------------------------------------
+                                                           Como conseguir ajuda
+- Acessando esse site https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+
+-Lá tem vários Pseudo-classes
+
+-------------------------------------------------------\\---------------------------------------------------------------------------------------------
+                                                           Pseudo-elements
+- O ::before  adiciona um pseudo-elemento antes do elemento selecionado.
+
+exemplo: <ul>
+          <li>Gratidão</li>
+          <li>Esperança</li>
+          <li>Fé</li>
+          <li>Liberdade</li>                        <==== {ISSO AQUI VAI FAZER COM QUE O SINAL DE > FIQUE ANTES DAS PALAVRAS}
+        </ul> 
+
+
+           li::before {
+             content: "> "
+          }
+
+- O ::after adiciona um pseudo-elemento depois do elemento selecionado
+
+exemplo: 
+ CSS: 
+     li::after{
+       content: ";"
+      }
+
+- Tanto ::before quanto para o ::after é preciso adicionar o content, mesmo que ele seja vazio content = "";
+
+- O ::first-line pega a primeira linha de um texto.
+
+exemplo:  <p>Ser grato é ter reconhecimento de que alguém o auxiliou de alguma forma. É perceber naturalmente os benefícios que fizeram a seu favor.</p>
+
+          <p>É quando voce recebe uma ajuda, direita ou indiretamente, e consegue acreditar na outra pessoa, o gesto de bondade</p>
+
+          <p>A gratidão deveria ser um sentimento nato, plantado,dentro de cada ser humano</p>
+
+CSS:
+      p::first-line {                                        
+        font-weight: bold;         <===== {ASSIM EU SÓ ESTILIZO A PRIMEIRA LINHA DO <P>}
+      }
+
+
+---------------------------------------------------\\------------------------------------------------------------------------------------------------
